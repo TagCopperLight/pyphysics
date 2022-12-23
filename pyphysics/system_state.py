@@ -1,13 +1,13 @@
-#pyright: reportShadowedImports=false
-from .math import Vector2
+from .math.vector import Vector2
+
 
 class SystemStateObject:
     def __init__(self) -> None:
-        self.position: Vector2
-        self.velocity: Vector2
-        self.acceleration: Vector2
+        self.position = Vector2()
+        self.velocity = Vector2()
+        self.acceleration = Vector2()
 
-        self.force: Vector2
+        self.force = Vector2()
         self.mass: float
 
         self.angle: float

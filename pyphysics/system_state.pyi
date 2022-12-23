@@ -1,9 +1,12 @@
-#pyright: reportShadowedImports=false
-from .math import Vector2
+from .math.vector import Vector2
+
 
 class SystemStateObject:
     def __init__(self) -> None:
-        ...
+        self.position: Vector2
+        self.force: Vector2
+
+        self.mass: float
 
     def local_to_world(self, local_point: Vector2) -> Vector2:
         ...

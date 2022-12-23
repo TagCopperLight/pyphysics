@@ -1,4 +1,3 @@
-# pyright: reportShadowedImports=false
 from math import sqrt, cos, sin
 
 class Vector2:
