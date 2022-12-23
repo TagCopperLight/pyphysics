@@ -3,7 +3,6 @@ from .math import Vector2
 
 class SystemStateObject:
     def __init__(self) -> None:
-        # Position
         self.position: Vector2
         self.velocity: Vector2
         self.acceleration: Vector2
@@ -11,7 +10,6 @@ class SystemStateObject:
         self.force: Vector2
         self.mass: float
 
-        # Rotation
         self.angle: float
         self.angular_velocity: float
         self.angular_acceleration: float

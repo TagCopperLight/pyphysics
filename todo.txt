@@ -2,3 +2,4 @@
 - Force Generator
 - Rigid Body System
 - Differential Equation Solver
+- Discord Badge
