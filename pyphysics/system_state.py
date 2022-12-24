@@ -11,11 +11,13 @@ class SystemState:
         self.velocities: list[Vector2] = []
         self.accelerations: list[Vector2] = []
         self.forces: list[Vector2] = []
+        self.masses: list[float] = []
 
         self.angles: list[float] = []
         self.angular_velocities: list[float] = []
         self.angular_accelerations: list[float] = []
         self.torques: list[float] = []
+        self.inertias: list[float] = []
     
     def local_to_world(self, body: RigidBody, local_point: Vector2) -> Vector2:
         index = self.bodies.index(body)
