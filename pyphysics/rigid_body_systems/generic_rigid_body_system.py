@@ -12,8 +12,11 @@ class GenericRigidBodySystem(RigidBodySystem):
         
         for _ in range(steps):
             self.ode_solver.start(self.system_state, dt / steps)
-
-            while self.ode_solver.step(self.system_state):
+            
+            done = True
+            while done:
+                done = self.ode_solver.step(self.system_state)
+                
                 self.process_forces()
                 self.ode_solver.solve(self.system_state)
             
