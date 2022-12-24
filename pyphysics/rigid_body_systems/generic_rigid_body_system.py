@@ -18,3 +18,10 @@ class GenericRigidBodySystem(RigidBodySystem):
                 self.ode_solver.solve(self.system_state)
             
             self.ode_solver.end()
+
+        for i in range(len(self.bodies)):
+            self.bodies[i].position = self.system_state.positions[i]
+            self.bodies[i].velocity = self.system_state.velocities[i]
+            
+            self.bodies[i].angle = self.system_state.angles[i]
+            self.bodies[i].angular_velocity = self.system_state.angular_velocities[i]

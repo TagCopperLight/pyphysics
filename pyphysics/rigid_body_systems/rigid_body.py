@@ -5,15 +5,11 @@ class RigidBody:
     def __init__(self) -> None:
         self.position = Vector2()
         self.velocity = Vector2()
-        self.acceleration = Vector2()
-        self.force = Vector2()
 
         self.mass: float
 
         self.angle: float
         self.angular_velocity: float
-        self.angular_acceleration: float
-        self.torque: float
 
         self.inertia: float
     
