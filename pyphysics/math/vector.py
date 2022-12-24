@@ -1,5 +1,6 @@
 from math import sqrt, cos, sin
 
+
 class Vector2:
     def __init__(self, *args: int | float | tuple[int | float, int | float])-> None:
         if len(args) == 2 and isinstance(args[0], (int, float)) and isinstance(args[1], (int, float)):
@@ -36,14 +37,14 @@ class Vector2:
     def __repr__(self) -> str:
         return f"Vector2({self.x}, {self.y})"
 
-    def lenght_squared(self) -> int | float:
+    def length_squared(self) -> int | float:
         return self.x**2 + self.y**2
 
-    def lenght(self) -> int | float:
-        return sqrt(self.lenght_squared())
+    def length(self) -> int | float:
+        return sqrt(self.length_squared())
 
     def normalize(self) -> "Vector2":
-        return self / self.lenght()
+        return self / self.length()
     
     def rotate(self, angle: int | float) -> "Vector2":
         return Vector2(self.x * cos(angle) - self.y * sin(angle), self.x * sin(angle) + self.y * cos(angle))

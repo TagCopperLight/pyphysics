@@ -29,10 +29,10 @@ class Vector2:
     def __repr__(self) -> str:
         ...
 
-    def lenght_squared(self) -> int | float:
+    def length_squared(self) -> int | float:
         ...
 
-    def lenght(self) -> int | float:
+    def length(self) -> int | float:
         ...
 
     def normalize(self) -> "Vector2":

@@ -1,6 +1,7 @@
-#pyright: reportShadowedImports=false
-from ..system_state import SystemStateObject
+from ..system_state import SystemState
 from .force_generator import ForceGenerator
+from ..rigid_body import RigidBody
+
 from ..math.vector import Vector2
 
 
@@ -9,5 +10,7 @@ class StaticForceGenerator(ForceGenerator):
         self.position = Vector2()
         self.force = Vector2()
 
-    def apply(self, system_state: SystemStateObject) -> None:
-        system_state.apply_force(self.force, self.position)
+        self.body: RigidBody
+
+    def apply(self, system_state: SystemState) -> None:
+        system_state.apply_force(system_state.bodies.index(self.body), self.force, self.position)

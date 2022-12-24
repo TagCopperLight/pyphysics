@@ -1,5 +1,4 @@
-#pyright: reportShadowedImports=false
-from ..system_state import SystemStateObject
+from ..system_state import SystemState
 from .force_generator import ForceGenerator
 
 
@@ -7,5 +6,5 @@ class StaticForceGenerator(ForceGenerator):
     def __init__(self) -> None:
         ...
 
-    def apply(self, system_state: SystemStateObject) -> None:
+    def apply(self, system_state: SystemState) -> None:
         ...
