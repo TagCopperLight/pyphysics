@@ -23,5 +23,5 @@ class NSVOdeSolver(OdeSolver):
             system_state.positions[i] += system_state.velocities[i] * self.dt
             system_state.angles[i] += system_state.angular_velocities[i] * self.dt
 
-    def end(self):
+    def end(self) -> None:
         pass

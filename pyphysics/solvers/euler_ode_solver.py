@@ -23,5 +23,5 @@ class EulerOdeSolver(OdeSolver):
             system_state.velocities[i] += system_state.accelerations[i] * self.dt
             system_state.angular_velocities[i] += system_state.angular_accelerations[i] * self.dt
 
-    def end(self):
+    def end(self) -> None:
         pass
