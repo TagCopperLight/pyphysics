@@ -6,16 +6,16 @@ from ..math.vector import Vector2
 
 
 class StringForceGenerator(ForceGenerator):
-    def __init__(self) -> None:
-        self.rest_length: float
-        self.spring_constant: float
-        self.damping: float
+    def __init__(self, rest_length: float, spring_constant: float, damping: float, body1: RigidBody, body2: RigidBody, local_pos1: Vector2 = Vector2(), local_pos2: Vector2 = Vector2()) -> None:
+        self.rest_length: float = rest_length
+        self.spring_constant: float = spring_constant
+        self.damping: float = damping
 
-        self.local_position_1 = Vector2()
-        self.local_position_2 = Vector2()
+        self.body_1: RigidBody = body1
+        self.body_2: RigidBody = body2
 
-        self.body_1: RigidBody
-        self.body_2: RigidBody
+        self.local_position_1: Vector2 = local_pos1
+        self.local_position_2: Vector2 = local_pos2
 
     def apply(self, system_state: SystemState) -> None:
         position1 = system_state.local_to_world(self.body_1, self.local_position_1)

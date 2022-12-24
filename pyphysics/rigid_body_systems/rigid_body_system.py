@@ -6,9 +6,9 @@ from ..math.vector import Vector2
 
 
 class RigidBodySystem:
-    def __init__(self) -> None:
-        self.bodies: list[RigidBody] = []
-        self.force_generators: list[ForceGenerator] = []
+    def __init__(self, bodies: list[RigidBody], force_generators: list[ForceGenerator]) -> None:
+        self.bodies = bodies
+        self.force_generators = force_generators
 
         self.system_state = SystemState()
 

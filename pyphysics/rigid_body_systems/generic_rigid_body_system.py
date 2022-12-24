@@ -1,11 +1,13 @@
 from .rigid_body_system import RigidBodySystem
 from ..solvers.ode_solver import OdeSolver
+from ..rigid_body_systems.rigid_body import RigidBody
+from ..force_generators.force_generator import ForceGenerator
 
 
 class GenericRigidBodySystem(RigidBodySystem):
-    def __init__(self) -> None:
-        super().__init__()
-        self.ode_solver: OdeSolver
+    def __init__(self, bodies: list[RigidBody], force_generators: list[ForceGenerator], ode_solver: OdeSolver) -> None:
+        super().__init__(bodies, force_generators)
+        self.ode_solver = ode_solver
 
     def process(self, dt: float, steps: int) -> None:
         self.populate_system_state()

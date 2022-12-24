@@ -2,16 +2,16 @@ from ..math.vector import Vector2
 
 
 class RigidBody:
-    def __init__(self) -> None:
-        self.position = Vector2()
-        self.velocity = Vector2()
+    def __init__(self, position: Vector2, velocity: Vector2, mass: float, angle: float, angular_velocity: float, inertia: float) -> None:
+        self.position = position
+        self.velocity = velocity
 
-        self.mass: float
+        self.mass = mass
 
-        self.angle: float
-        self.angular_velocity: float
+        self.angle= angle
+        self.angular_velocity = angular_velocity
 
-        self.inertia: float
+        self.inertia = inertia
     
     def local_to_world(self, point: Vector2) -> Vector2:
         return point.rotate(self.angle) + self.position
