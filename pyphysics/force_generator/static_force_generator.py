@@ -13,4 +13,4 @@ class StaticForceGenerator(ForceGenerator):
         self.body: RigidBody
 
     def apply(self, system_state: SystemState) -> None:
-        system_state.apply_force(system_state.bodies.index(self.body), self.force, self.position)
+        system_state.apply_force(self.body, self.force, self.position)
