@@ -1,6 +1,6 @@
 from ..system_state import SystemState
 from .force_generator import ForceGenerator
-from ..rigid_body import RigidBody
+from ..rigid_body_systems.rigid_body import RigidBody
 
 from ..math.vector import Vector2
 
