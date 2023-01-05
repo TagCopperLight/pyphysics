@@ -1,3 +1,6 @@
+from typing import Generator
+
+
 class Vector2:
     def __init__(self, *args: int | float | tuple[int | float, int | float])-> None:
         ...
@@ -24,6 +27,9 @@ class Vector2:
         ...
 
     def __getitem__(self, index: int) -> int | float:
+        ...
+    
+    def __iter__(self) -> Generator[int | float, None, None]:
         ...
 
     def __repr__(self) -> str:

@@ -1,4 +1,5 @@
 from math import sqrt, cos, sin
+from typing import Generator
 
 
 class Vector2:
@@ -33,6 +34,10 @@ class Vector2:
 
     def __getitem__(self, index: int) -> int | float:
         return (self.x, self.y)[index]
+
+    def __iter__(self) -> Generator[int | float, None, None]:
+        yield self.x
+        yield self.y
     
     def __repr__(self) -> str:
         return f"Vector2({self.x}, {self.y})"
