@@ -3,31 +3,26 @@ from typing import Generator
 
 
 class Vector2:
-    def __init__(self, *args: int | float | tuple[int | float, int | float])-> None:
-        if len(args) == 2 and isinstance(args[0], (int, float)) and isinstance(args[1], (int, float)):
-            self.x, self.y = args[0], args[1]
-        elif len(args) == 1 and isinstance(args[0], tuple):
-            self.x, self.y = args[0]
-        else:
-            self.x, self.y = 0, 0
+    def __init__(self, x: int | float=0, y: int | float=0)-> None:
+        self.x, self.y = x, y
     
     def __add__(self, other: "Vector2") -> "Vector2":
-        return Vector2(self.x + other.x, self.y + other.y)
+        return self.__class__(self.x + other.x, self.y + other.y)
         
     def __sub__(self, other: "Vector2") -> "Vector2":
-        return Vector2(self.x - other.x, self.y - other.y)
+        return self.__class__(self.x - other.x, self.y - other.y)
 
     def __mul__(self, other: int | float) -> "Vector2":
-        return Vector2(self.x * other, self.y * other)
+        return self.__class__(self.x * other, self.y * other)
 
     def __rmul__(self, other: int | float) -> "Vector2":
         return self.__mul__(other)
     
     def __truediv__(self, other: int | float) -> "Vector2":
-        return Vector2(self.x / other, self.y / other)
+        return self.__class__(self.x / other, self.y / other)
     
     def __neg__(self) -> "Vector2":
-        return Vector2(-self.x, -self.y)
+        return self.__class__(-self.x, -self.y)
 
     def __len__(self) -> int:
         return 2
@@ -52,7 +47,8 @@ class Vector2:
         return self / self.length()
     
     def rotate(self, angle: int | float) -> "Vector2":
-        return Vector2(self.x * cos(angle) - self.y * sin(angle), self.x * sin(angle) + self.y * cos(angle))
+        cos_angle, sin_angle = cos(angle), sin(angle)
+        return self.__class__(self.x * cos_angle - self.y * sin_angle, self.x * sin_angle + self.y * cos_angle)
 
     def dot(self, other: "Vector2") -> int | float:
         return self.x * other.x + self.y * other.y
