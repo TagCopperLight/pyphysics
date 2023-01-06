@@ -18,7 +18,7 @@ class SystemState:
         self.angular_accelerations: list[float] = []
         self.torques: list[float] = []
         self.inertias: list[float] = []
-    
+
     def local_to_world(self, body: RigidBody, local_point: Vector2) -> Vector2:
         index = self.bodies.index(body)
         return local_point.rotate(self.angles[index]) + self.positions[index]
@@ -31,3 +31,18 @@ class SystemState:
         index = self.bodies.index(body)
         self.forces[index] += force
         self.torques[index] += force.cross(self.local_to_world(body, local_point) - self.positions[index])
+
+    def copy(self) -> 'SystemState':
+        copy = self.__class__()
+        copy.bodies = self.bodies.copy()
+        copy.positions = self.positions.copy()
+        copy.velocities = self.velocities.copy()
+        copy.accelerations = self.accelerations.copy()
+        copy.forces = self.forces.copy()
+        copy.masses = self.masses.copy()
+        copy.angles = self.angles.copy()
+        copy.angular_velocities = self.angular_velocities.copy()
+        copy.angular_accelerations = self.angular_accelerations.copy()
+        copy.torques = self.torques.copy()
+        copy.inertias = self.inertias.copy()
+        return copy

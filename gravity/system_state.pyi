@@ -27,3 +27,6 @@ class SystemState:
 
     def apply_force(self, body: RigidBody, force: Vector2, local_point: Vector2) -> None:
         ...
+    
+    def copy(self) -> 'SystemState':
+        ...
