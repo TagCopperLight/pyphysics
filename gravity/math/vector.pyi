@@ -3,7 +3,8 @@ from typing import Generator
 
 class Vector2:
     def __init__(self, *args: int | float | tuple[int | float, int | float])-> None:
-        ...
+        self.x: int | float
+        self.y: int | float
     
     def __add__(self, other: "Vector2") -> "Vector2":
         ...
