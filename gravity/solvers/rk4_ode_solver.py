@@ -1,19 +1,18 @@
 from ..system_state import SystemState
 from .ode_solver import OdeSolver
 
-from copy import deepcopy
-
 
 class Rk4OdeSolver(OdeSolver):
     def __init__(self) -> None:
         super().__init__()
-        self.stage = 1
-        self.next_stage = 1
     
     def start(self, system_state_initial: SystemState, dt: float) -> None:
         self.dt = dt
-        self.initial_state = deepcopy(system_state_initial)
-        self.accumulator = deepcopy(system_state_initial)
+        self.initial_state = system_state_initial.copy()
+        self.accumulator = system_state_initial.copy()
+
+        self.stage = 1
+        self.next_stage = 1
 
     def step(self, system_state: SystemState) -> bool:
         if self.stage == 2 or self.stage == 3:
@@ -31,8 +30,8 @@ class Rk4OdeSolver(OdeSolver):
                 system_state.positions[i] = self.initial_state.positions[i] + self.dt * system_state.velocities[i]
 
         self.next_stage += 1
-
-        return self.next_stage > 4
+        
+        return self.next_stage <= 4
     
     def solve(self, system_state: SystemState) -> None:
         stage_weight = {1:1, 2:2, 3:2, 4:1}[self.stage]
