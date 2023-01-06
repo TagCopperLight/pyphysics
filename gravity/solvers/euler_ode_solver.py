@@ -14,9 +14,6 @@ class EulerOdeSolver(OdeSolver):
     
     def solve(self, system_state: SystemState) -> None:
         for i in range(len(system_state.bodies)):
-            system_state.accelerations[i] = system_state.forces[i] / system_state.masses[i]
-            system_state.angular_accelerations[i] = system_state.torques[i] / system_state.inertias[i]
-            
             system_state.positions[i] += system_state.velocities[i] * self.dt
             system_state.angles[i] += system_state.angular_velocities[i] * self.dt
 

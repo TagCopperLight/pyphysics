@@ -20,6 +20,11 @@ class GenericRigidBodySystem(RigidBodySystem):
                 done = self.ode_solver.step(self.system_state)
                 
                 self.process_forces()
+
+                for i in range(len(self.system_state.bodies)):
+                    self.system_state.accelerations[i] = self.system_state.forces[i] / self.system_state.masses[i]
+                    self.system_state.angular_accelerations[i] = self.system_state.torques[i] / self.system_state.inertias[i]
+
                 self.ode_solver.solve(self.system_state)
             
             self.ode_solver.end()
