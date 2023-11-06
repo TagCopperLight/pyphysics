@@ -2,7 +2,7 @@ from typing import Generator
 
 
 class Vector2:
-    def __init__(self, x: int | float=..., y: int | float=...) -> None:
+    def __init__(self, x: int | float=0, y: int | float=0) -> None:
         self.x: int | float
         self.y: int | float
     
