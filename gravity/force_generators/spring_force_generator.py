@@ -18,28 +18,19 @@ class SpringForceGenerator(ForceGenerator):
         self.local_position_2: Vector2 = local_pos2
 
     def apply(self, system_state: SystemState) -> None:
-        position1 = system_state.local_to_world(self.body_1, self.local_position_1)
-        position2 = system_state.local_to_world(self.body_2, self.local_position_2)
+        delta = self.body_2.position - self.body_1.position
+        delta_velocity = self.body_2.velocity - self.body_1.velocity
 
-        velocity1 = system_state.velocity_at_point(self.body_1, self.local_position_1)
-        velocity2 = system_state.velocity_at_point(self.body_2, self.local_position_2)
+        length = delta.length()
 
-        delta = position2 - position1
+        magnitude = (length - self.rest_length) * self.spring_constant
 
-        delta_length = delta.length()
+        if length == 0:
+            delta = Vector2(0.1, 0)
 
-        if delta_length != 0:
-            delta /= delta_length
-        else:
-            delta = Vector2(1, 0)
+        damping_force = delta_velocity.dot(delta.normalize()) * self.damping
 
-        delta_velocity = velocity2 - velocity1
-
-        velocity = delta.dot(delta_velocity)
-        length = delta_length - self.rest_length
-
-        force = delta * (self.spring_constant * length + self.damping * velocity)
+        force = (magnitude + damping_force) * delta.normalize()
 
         system_state.apply_force(self.body_1, force, self.local_position_1)
         system_state.apply_force(self.body_2, -force, self.local_position_2)
-
